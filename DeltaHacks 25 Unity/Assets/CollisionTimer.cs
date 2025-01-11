@@ -59,6 +59,7 @@ public class CollisionTimer : MonoBehaviour
     {
         if(spacePressedTime > 0)
         {
+            score += (int)Mathf.Round(spacePressedTime * 5);
             Destroy(collidedObject);
             Debug.Log("Clicked!");
         }
