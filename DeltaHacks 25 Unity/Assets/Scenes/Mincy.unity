@@ -235,8 +235,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655f6294783d0c444b1a52f8d5e2d6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 1251257858}
-  amountToPool: 20
+  objectToPoolStr:
+  - Dit
+  - Dah
+  - End
+  objectToPool:
+  - {fileID: 1659648744}
+  - {fileID: 327928536}
+  - {fileID: 2091813806}
+  amountToPool: 140000001400000014000000
 --- !u!4 &526927277
 Transform:
   m_ObjectHideFlags: 0
