@@ -303,6 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8710f525e224126acc3fc22ce53d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dit: {fileID: 1659648744}
+  dah: {fileID: 327928536}
+  end: {fileID: 2091813806}
+  message: ABCD
+  gap: 1
+  gapBetweenMorse: 0.5
 --- !u!1 &1659648744
 GameObject:
   m_ObjectHideFlags: 0
