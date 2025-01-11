@@ -24,14 +24,12 @@ public class Generator : MonoBehaviour
     };
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (letterIndex >= message.Length) return; // all letters processed
 
         elapsedTime += Time.deltaTime;
@@ -43,7 +41,8 @@ public class Generator : MonoBehaviour
                 letterIndex++;
                 morseIndex = 0;
             }
-        } else {
+        } 
+        else {
             char currentLetter = message[letterIndex];
             string morse = letterMorseMap[currentLetter];
             if (morseIndex < morse.Length) {
@@ -59,7 +58,8 @@ public class Generator : MonoBehaviour
                     elapsedTime = 0f;
                     morseIndex++;
                 }
-            } else {
+            } 
+            else {
                 Instantiate(end, transform);
                 Debug.Log("end");
                 isBetweenLetters = true;

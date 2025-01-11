@@ -5,21 +5,26 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool SharedInstance;
-    List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
+    Dictionary<string, List<GameObject>> pooledObjects;
+    public List<string> objectToPoolStr;
+    public List<GameObject> objectToPool;
+    public List<int> amountToPool;
 
     void Awake() {
         SharedInstance = this;
     }
 
     void Start() {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++) {
-            tmp = Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+        pooledObjects = new Dictionary<string, List<GameObject>>();
+        for (int i = 0; i < objectToPool.Count; i++) {
+            List<GameObject> tmpList = new List<GameObject>();
+            GameObject tmp;
+            for (int j = 0; j < amountToPool[i]; j++) {
+                tmp = Instantiate(objectToPool[i]);
+                tmp.SetActive(false);
+                tmpList.Add(tmp);
+            }
+            pooledObjects.Add(objectToPoolStr[i], tmpList);
         }
     }
 
@@ -28,11 +33,11 @@ public class ObjectPool : MonoBehaviour {
         
     }
 
-    public GameObject GetPooledObject() {
-        for (int i = 0; i < amountToPool; i++) {
-            if (!pooledObjects[i].activeInHierarchy) {
-                pooledObjects[i].SetActive(true);
-                return pooledObjects[i];
+    public GameObject GetPooledObject(string obj) {
+        for (int i = 0; i < pooledObjects[obj].Count; i++) {
+            if (!pooledObjects[obj][i].activeInHierarchy) {
+                pooledObjects[obj][i].SetActive(true);
+                return pooledObjects[obj][i];
             }
         }
         return null;

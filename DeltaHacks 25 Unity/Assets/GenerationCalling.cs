@@ -16,7 +16,7 @@ public class GenerationCalling : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space)) {
             int curx = Random.Range(0, 10);
             int cury = Random.Range(0, 10);
-            GameObject tmp = objPool.GetPooledObject();
+            GameObject tmp = objPool.GetPooledObject("square");
             tmp.transform.position = new Vector3(curx, cury, 0);
             tmp.SetActive(true);
         }
