@@ -51,17 +51,17 @@ public class Generator : MonoBehaviour
                     char ditDah = morse[morseIndex];
                     if (ditDah == '.') {
                         Instantiate(dit, transform);
-                        // Debug.Log(".");
+                        Debug.Log(".");
                     } else if (ditDah == '-') {
                         Instantiate(dah, transform);
-                        // Debug.Log("-");
+                        Debug.Log("-");
                     }
                     elapsedTime = 0f;
                     morseIndex++;
                 }
             } else {
                 Instantiate(end, transform);
-                // Debug.Log("end");
+                Debug.Log("end");
                 isBetweenLetters = true;
                 elapsedTime = 0f;
             }
