@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play Scene.unity
     guid: 574d29f12baea4df782af01d2603fbf2
+  - enabled: 1
+    path: Assets/Scenes/Mincy.unity
+    guid: 71ae70d94453a4b5c921de6a90555a4c
   m_configObjects: {}
