@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Generator : MonoBehaviour {
     public ObjectPool objectPool;
@@ -9,12 +11,14 @@ public class Generator : MonoBehaviour {
     public GameObject end;
     [SerializeField] public string message = "OOOO"; // placeholder message
     [SerializeField] public float gap = 1f; // gap between each letter
-    [SerializeField]public float gapAfterDit = 0.25f; // gap after a dit
-    [SerializeField]public float gapAfterDah = 0.5f; // gap after a dah should be longer
+    [SerializeField] public float gapAfterDit = 0.25f; // gap after a dit
+    [SerializeField] public float gapAfterDah = 0.5f; // gap after a dah should be longer
     private float elapsedTime = 0.0f;
     private int letterIndex = 0;
     private int morseIndex = 0;
     private bool isBetweenLetters = false;
+
+    private string[] messages = {"HELLO", "WORLD", "MORSE", "SOS", "POWER", "HACKER"};
 
     private bool wasDit = false; // check if last one was dit or dah
     // letter to morse map, I'll add the rest later
@@ -23,19 +27,52 @@ public class Generator : MonoBehaviour {
         {'B', "-..."},
         {'C', "-.-."},
         {'D', "-.."},
-        {'O', "---"}
+        {'E', "."},
+        {'F', "..-."},
+        {'G', "--."},
+        {'H', "...."},
+        {'I', ".."},
+        {'J', ".---"},
+        {'K', "-.-"},
+        {'L', ".-.."},
+        {'M', "--"},
+        {'N', "-."},
+        {'O', "---"},
+        {'P', ".--."},
+        {'Q', "--.-"},
+        {'R', ".-."},
+        {'S', "..."},
+        {'T', "-"},
+        {'U', "..-"},
+        {'V', "...-"},
+        {'W', ".--"},
+        {'X', "-..-"},
+        {'Y', "-.--"},
+        {'Z', "--.."}
     };
 
     // Start is called before the first frame update
     void Start() {
+        // Get random index
+        int index = Random.Range(0, messages.Length);
+        message = messages[index];
         
     }
 
     // Update is called once per frame
     void Update() {
-        if (letterIndex >= message.Length) return; // all letters processed
 
         elapsedTime += Time.deltaTime;
+
+        if (letterIndex >= message.Length) {
+            if (elapsedTime > 3) {
+                SceneManager.LoadScene("Ending Scene");
+                return;
+            }
+            else return; // all letters processed
+        }
+
+        
         
         if (isBetweenLetters) {
             if (elapsedTime >= gap) {

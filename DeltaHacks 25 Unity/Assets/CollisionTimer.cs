@@ -8,7 +8,6 @@ public class CollisionTimer : MonoBehaviour {
     private bool clicked = false;
     private bool wrongPress = false;
 
-
     public int score = 0;
 
     private GameObject collidedObject;
@@ -18,7 +17,6 @@ public class CollisionTimer : MonoBehaviour {
     private GameObject curWord;
 
     void Start() {
-
         
     }
 
@@ -54,7 +52,7 @@ public class CollisionTimer : MonoBehaviour {
             curWord = objectPool.GetPooledObject("Text");
             curWord.GetComponent<GenerateNumbers>().getWord(-5, 4, " ");
         }
-        if(collidedObject == null && Input.GetKey(KeyCode.Space) && !wrongPress) {
+        if (collidedObject == null && Input.GetKey(KeyCode.Space) && !wrongPress) {
             wrongPress = true;
             score--;
             Debug.Log("Deduct");
@@ -73,11 +71,9 @@ public class CollisionTimer : MonoBehaviour {
                 spacePressedTime += Time.deltaTime;
             }
         }
-        else if (collidedObject != null && collidedObject.CompareTag("Dah"))
-        {
+        else if (collidedObject != null && collidedObject.CompareTag("Dah")) {
             collisionTime += Time.deltaTime;
-            if (Input.GetKey(KeyCode.Space))
-            {
+            if (Input.GetKey(KeyCode.Space)) {
                 clicked = true;
                 spacePressedTime += Time.deltaTime;
                 BounceObject(collidedObject);
@@ -95,8 +91,7 @@ public class CollisionTimer : MonoBehaviour {
         obj.transform.position = new Vector3(obj.transform.position.x, initialY + bounce, obj.transform.position.z);
     }
 
-    private void ResetTimes()
-    {
+    private void ResetTimes() {
         collisionTime = 0f;
         spacePressedTime = 0f;
         clicked = false;
