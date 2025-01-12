@@ -96,7 +96,7 @@ public class Generator : MonoBehaviour {
                         Debug.Log(".");
                     } else if (ditDah == '-') {
                         GameObject tmp = objectPool.GetPooledObject("Dah");
-                        tmp.transform.position = new Vector3(8, 2, 0);
+                        tmp.transform.position = new Vector3(8, 1.6f, 0);
                         wasDit = false;
                         Debug.Log("-");
                     }
