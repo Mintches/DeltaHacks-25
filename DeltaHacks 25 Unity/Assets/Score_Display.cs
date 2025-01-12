@@ -23,6 +23,7 @@ public class Score_Display : MonoBehaviour {
         if (newScore != currScore) {
             currScore = newScore;
             string scoreText = "Score: " + currScore;
+
             curText.GetComponent<GenerateNumbers>().deleteWord();
             curText.SetActive(false);
             curText = objectPool.GetPooledObject("Text");

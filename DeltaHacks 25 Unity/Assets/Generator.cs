@@ -18,7 +18,9 @@ public class Generator : MonoBehaviour {
     private int morseIndex = 0;
     private bool isBetweenLetters = false;
 
-    private string[] messages = {"HELLO", "WORLD", "MORSE", "SOS", "POWER", "HACKER"};
+    public GameObject collisionObj;
+
+    private string[] messages = {"DELTA", "HELLO", "WORLD", "MORSE", "SOS", "POWER", "HACKER"};
 
     private bool wasDit = false; // check if last one was dit or dah
     // letter to morse map, I'll add the rest later
@@ -66,13 +68,13 @@ public class Generator : MonoBehaviour {
 
         if (letterIndex >= message.Length) {
             if (elapsedTime > 3) {
+                Data.message = message;
+                Data.score = collisionObj.GetComponent<CollisionTimer>().score;
                 SceneManager.LoadScene("Ending Scene");
                 return;
             }
             else return; // all letters processed
         }
-
-        
         
         if (isBetweenLetters) {
             if (elapsedTime >= gap) {
