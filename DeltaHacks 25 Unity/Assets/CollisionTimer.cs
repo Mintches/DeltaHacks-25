@@ -58,7 +58,7 @@ public class CollisionTimer : MonoBehaviour {
     void BounceObject(GameObject obj)
     {
         float initialY = obj.transform.position.y;
-        float bounce = Mathf.Sin(Time.time * 50.0f) * 0.05f;
+        float bounce = Mathf.Sin(Time.time * 50.0f) * 0.01f;
         obj.transform.position = new Vector3(obj.transform.position.x, initialY + bounce, obj.transform.position.z);
     }
 
