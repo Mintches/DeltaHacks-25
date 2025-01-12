@@ -56,6 +56,7 @@ public class CollisionTimer : MonoBehaviour {
             wrongPress = true;
             score--;
             Debug.Log("Deduct");
+            
         }
         if (!Input.GetKey(KeyCode.Space)) {
             wrongPress = false;
