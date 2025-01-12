@@ -7,6 +7,7 @@ public class CollisionTimer : MonoBehaviour {
     private float spacePressedTime = 0f;
     private bool clicked = false;
     private bool wrongPress = false;
+    private bool isPlaying = false;
 
     public int score = 0;
 
@@ -24,8 +25,6 @@ public class CollisionTimer : MonoBehaviour {
         if (other.gameObject.CompareTag("Dit") || other.gameObject.CompareTag("Dah")) {
             isColliding = true;
             collidedObject = other.gameObject;
-            beep.Play();
-            light.SetActive(true);
         }
         else if (other.gameObject.CompareTag("End")) {
             if (curWord != null) {
@@ -41,8 +40,6 @@ public class CollisionTimer : MonoBehaviour {
         if (other.gameObject.CompareTag("Dit") || other.gameObject.CompareTag("Dah")) {
             isColliding = false;
             ResetTimes();
-            beep.Stop();
-            light.SetActive(false);
         }
         other.gameObject.SetActive(false);
     }
@@ -58,7 +55,15 @@ public class CollisionTimer : MonoBehaviour {
             Debug.Log("Deduct");
         }
         if (!Input.GetKey(KeyCode.Space)) {
+            beep.Stop();
+            light.SetActive(false);
+            isPlaying = false;
             wrongPress = false;
+        } else if (!isPlaying)
+        {
+            isPlaying = true;
+            beep.Play();
+            light.SetActive(true);
         }
         if (wrongPress) return;
         if (collidedObject != null && collidedObject.CompareTag("Dit")) {
