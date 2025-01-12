@@ -18,7 +18,7 @@ public class press_start : MonoBehaviour
         
     }
 
-    public void change_to_play() {
+    public void change_scene() {
         SceneManager.LoadScene(sceneToLoad);;
     }
 }

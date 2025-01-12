@@ -276,9 +276,10 @@ MonoBehaviour:
   dit: {fileID: 907535574}
   dah: {fileID: 1834969212}
   end: {fileID: 1804452315}
-  message: ABCD
+  message: OBOB
   gap: 1
-  gapBetweenMorse: 0.5
+  gapAfterDit: 0.5
+  gapAfterDah: 0.75
 --- !u!1 &808012117
 GameObject:
   m_ObjectHideFlags: 0
