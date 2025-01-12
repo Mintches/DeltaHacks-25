@@ -28,6 +28,6 @@ public class LetterRenderer : MonoBehaviour {
             mp.Add(letters[i], sprites[i]);
         }
         spriteRenderer.sprite = mp[x];
-        Debug.Log(x);
+        // Debug.Log(x);
     }
 }

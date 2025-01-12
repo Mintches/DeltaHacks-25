@@ -17,6 +17,10 @@ public class CollisionTimer : MonoBehaviour {
     public ObjectPool objectPool;
     private GameObject curWord;
 
+    [SerializeField] private GameObject perfect;
+    [SerializeField] private GameObject ok;
+    [SerializeField] private GameObject miss;
+
     void Start() {
         
     }
@@ -32,7 +36,7 @@ public class CollisionTimer : MonoBehaviour {
                 curWord.SetActive(false);
             }
             curWord = objectPool.GetPooledObject("Text");
-            curWord.GetComponent<GenerateNumbers>().getWord(-5, 4, other.gameObject.GetComponent<End>().let.ToString());
+            curWord.GetComponent<GenerateNumbers>().getWord(-5, 6, other.gameObject.GetComponent<End>().let.ToString());
         }
     }
 
@@ -52,7 +56,10 @@ public class CollisionTimer : MonoBehaviour {
         if (collidedObject == null && Input.GetKey(KeyCode.Space) && !wrongPress) {
             wrongPress = true;
             score--;
-            Debug.Log("Deduct");
+            // Debug.Log("Deduct");
+            // perfect.transform.position = new Vector3(0,-20,0);
+            // ok.transform.position = new Vector3(0,-20,0);
+            // miss.transform.position = new Vector3(-6.5f,0.5f,0);
             
         }
         if (!Input.GetKey(KeyCode.Space)) {
@@ -73,6 +80,10 @@ public class CollisionTimer : MonoBehaviour {
                     score += 2;
                     collidedObject.SetActive(false);
                     collidedObject = null;
+                    Debug.Log("point");
+                    perfect.transform.position = new Vector3(-6.5f,0.75f,0);
+                    ok.transform.position = new Vector3(0,-20,0);
+                    miss.transform.position = new Vector3(-6,-60,0);
                 }
                 spacePressedTime += Time.deltaTime;
             }
@@ -84,9 +95,28 @@ public class CollisionTimer : MonoBehaviour {
                 spacePressedTime += Time.deltaTime;
                 BounceObject(collidedObject);
             } else if (clicked) {
-                score += (int)Mathf.Round(spacePressedTime * 4);
+                float dup = spacePressedTime;
+                int incre = (int)Mathf.Round(spacePressedTime * 4);
+                score += incre;
                 collidedObject.SetActive(false);
                 collidedObject = null;
+                // Debug.Log(spacePressedTime);
+                if (incre == 2){
+                    perfect.transform.position = new Vector3(-6.5f,0.75f,0);
+                    ok.transform.position = new Vector3(0,-20,0);
+                    miss.transform.position = new Vector3(-6,-60,0);
+                    Debug.Log("perf");
+                } else if (dup == 0) {
+                    Debug.Log("oop");
+                    perfect.transform.position = new Vector3(-6,-20,0);
+                    ok.transform.position = new Vector3(0,-20,0);
+                    miss.transform.position = new Vector3(-6.5f,0.5f,0);
+                } else {
+                    perfect.transform.position = new Vector3(-6,-20,0);
+                    ok.transform.position = new Vector3(-6.5f,0.5f,0);
+                    miss.transform.position = new Vector3(-6,-60,0);
+                    Debug.Log("ok");
+                }
             }
         }
     }

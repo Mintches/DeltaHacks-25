@@ -20,7 +20,7 @@ public class Generator : MonoBehaviour {
 
     public GameObject collisionObj;
 
-    private string[] messages = {"DELTA", "HELLO", "WORLD", "MORSE", "SOS", "POWER", "HACKER"};
+    private string[] messages = {"DELTA", "HACKER"};
 
     private bool wasDit = false; // check if last one was dit or dah
     // letter to morse map, I'll add the rest later
@@ -93,12 +93,12 @@ public class Generator : MonoBehaviour {
                         GameObject tmp = objectPool.GetPooledObject("Dit");
                         tmp.transform.position = new Vector3(8, 2, 0);
                         wasDit = true;
-                        Debug.Log(".");
+                        // Debug.Log(".");
                     } else if (ditDah == '-') {
                         GameObject tmp = objectPool.GetPooledObject("Dah");
                         tmp.transform.position = new Vector3(8, 1.6f, 0);
                         wasDit = false;
-                        Debug.Log("-");
+                        // Debug.Log("-");
                     }
                     elapsedTime = 0f;
                     morseIndex++;
@@ -107,7 +107,7 @@ public class Generator : MonoBehaviour {
                 GameObject tmp = objectPool.GetPooledObject("End");
                 tmp.GetComponent<End>().let = currentLetter;
                 tmp.transform.position = new Vector3(8, 4, 0);
-                Debug.Log("end");
+                // Debug.Log("end");
                 isBetweenLetters = true;
                 elapsedTime = 0f;
             }
