@@ -14,9 +14,6 @@ public class GenerateNumbers : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKey(KeyCode.Space)) {
-            getWord(-4, 1, "asdfasdfsadfadf2ergb!");
-        }
         
     }
 
