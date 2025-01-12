@@ -6,6 +6,7 @@ public class CollisionTimer : MonoBehaviour {
     private float collisionTime = 0f;  
     private float spacePressedTime = 0f;
     private bool clicked = false;
+    private bool wrongPress = false;
 
 
     public int score = 0;
@@ -18,9 +19,10 @@ public class CollisionTimer : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        isColliding = true;
-        collidedObject = other.gameObject;
-        if (collidedObject.CompareTag("Dit") || collidedObject.CompareTag("Dah")) {
+        
+        if (other.gameObject.CompareTag("Dit") || other.gameObject.CompareTag("Dah")) {
+            isColliding = true;
+            collidedObject = other.gameObject;
             beep.Play();
             light.SetActive(true);
         }
@@ -34,13 +36,23 @@ public class CollisionTimer : MonoBehaviour {
     }
 
     void Update() {
+        if(collidedObject == null && Input.GetKey(KeyCode.Space) && !wrongPress)
+        {
+            wrongPress = true;
+            score--;
+            Debug.Log("Deduct");
+        }
+        if (!Input.GetKey(KeyCode.Space))
+        {
+            wrongPress = false;
+        }
+        if (wrongPress) return;
         if (collidedObject != null && collidedObject.CompareTag("Dit")) {
             if (Input.GetKey(KeyCode.Space)) {
                 if (collidedObject != null) {
-                    score++;
+                    score += 2;
                     collidedObject.SetActive(false);
                     collidedObject = null;
-                    Debug.Log("Clicked!");
                 }
                 spacePressedTime += Time.deltaTime;
             }
@@ -58,7 +70,6 @@ public class CollisionTimer : MonoBehaviour {
                 score += (int)Mathf.Round(spacePressedTime * 4);
                 collidedObject.SetActive(false);
                 collidedObject = null;
-                Debug.Log("Clicked!");
             }
         }
     }
