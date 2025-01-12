@@ -25,7 +25,7 @@ public class Score_Display : MonoBehaviour {
             }
             Debug.Log(newScore);
             curText = objectPool.GetPooledObject("Text");
-            curText.GetComponent<GenerateNumbers>().getWord(-4,1,scoreText);
+            curText.GetComponent<GenerateNumbers>().getWord(4,4.5f,scoreText);
             //GetComponent<GenerateNumbers>().getWord(1,1,scoreText);
         }
     }
