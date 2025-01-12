@@ -49,7 +49,7 @@ public class CollisionTimer : MonoBehaviour {
                 BounceObject(collidedObject);
             } else if (clicked)
             {
-                score += (int)Mathf.Round(spacePressedTime * 10);
+                score += (int)Mathf.Round(spacePressedTime * 4);
                 collidedObject.SetActive(false);
                 collidedObject = null;
                 Debug.Log("Clicked!");
