@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene_Change_Play : MonoBehaviour
+public class press_start : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad;
     // Start is called before the first frame update
+    [SerializeField] private string sceneToLoad;
     void Start()
     {
         
@@ -18,7 +18,7 @@ public class Scene_Change_Play : MonoBehaviour
         
     }
 
-    public void scene_start_play() {
-        SceneManager.LoadScene(sceneToLoad);
+    public void change_to_play() {
+        SceneManager.LoadScene(sceneToLoad);;
     }
 }
