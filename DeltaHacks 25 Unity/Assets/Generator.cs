@@ -66,6 +66,7 @@ public class Generator : MonoBehaviour {
                 }
             } else {
                 GameObject tmp = objectPool.GetPooledObject("End");
+                tmp.GetComponent<End>().let = currentLetter;
                 tmp.transform.position = new Vector3(8, 4, 0);
                 Debug.Log("end");
                 isBetweenLetters = true;
