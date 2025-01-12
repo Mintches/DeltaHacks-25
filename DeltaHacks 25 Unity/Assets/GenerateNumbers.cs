@@ -5,7 +5,7 @@ using UnityEngine;
 public class GenerateNumbers : MonoBehaviour {
 
     public ObjectPool objectPool;
-    List<GameObject> letters;
+    List<GameObject> letters = null;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,6 +18,7 @@ public class GenerateNumbers : MonoBehaviour {
     }
 
     public void getWord(float x, float y, string word) {
+        if (letters == null) letters = new List<GameObject>();
         for (int i = 0; i < word.Length; i++) {
             GameObject newObj = objectPool.GetPooledObject("Letter");
             LetterRenderer newLetter = newObj.GetComponent<LetterRenderer>();

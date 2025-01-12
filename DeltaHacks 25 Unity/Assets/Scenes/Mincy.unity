@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e288f991baba43b18dac4fbdd93900b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPool: {fileID: 526927276}
+  collisionObj: {fileID: 808012117}
 --- !u!212 &304568512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -253,12 +255,14 @@ MonoBehaviour:
   - Dah
   - End
   - Letter
+  - Text
   objectToPool:
   - {fileID: 907535574}
   - {fileID: 1834969212}
   - {fileID: 1804452315}
   - {fileID: 933096737}
-  amountToPool: 14000000140000001400000064000000
+  - {fileID: 1806781452}
+  amountToPool: 1400000014000000140000006400000064000000
 --- !u!4 &526927277
 Transform:
   m_ObjectHideFlags: 0
@@ -893,6 +897,7 @@ MonoBehaviour:
   - {fileID: 950372280, guid: fdf32d490bf0c9343ad9781b6b0342e6, type: 3}
   - {fileID: -576233359, guid: fdf32d490bf0c9343ad9781b6b0342e6, type: 3}
   - {fileID: 178960124, guid: fdf32d490bf0c9343ad9781b6b0342e6, type: 3}
+  - {fileID: 0}
 --- !u!1 &1112795463
 GameObject:
   m_ObjectHideFlags: 0
