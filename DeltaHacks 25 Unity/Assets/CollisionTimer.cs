@@ -5,7 +5,9 @@ public class CollisionTimer : MonoBehaviour
 {
     private bool isColliding = false;
     private float collisionTime = 0f;  
-    private float spacePressedTime = 0f; 
+    private float spacePressedTime = 0f;
+    private bool clicked = false;
+
 
     public int score = 0;
     private GameObject collidedObject;
@@ -24,7 +26,6 @@ public class CollisionTimer : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         isColliding = false;
-        DestroyDah();
         ResetTimes();
     }
 
@@ -32,8 +33,6 @@ public class CollisionTimer : MonoBehaviour
     {
         if (collidedObject != null && collidedObject.CompareTag("Dit"))
         {
-
-
             if (Input.GetKey(KeyCode.Space))
             {
                 if (collidedObject != null)
@@ -50,24 +49,31 @@ public class CollisionTimer : MonoBehaviour
             collisionTime += Time.deltaTime;
             if (Input.GetKey(KeyCode.Space))
             {
+                clicked = true;
                 spacePressedTime += Time.deltaTime;
+                BounceObject(collidedObject);
+            } else if (clicked)
+            {
+                score += (int)Mathf.Round(spacePressedTime * 5);
+                Destroy(collidedObject);
+                Debug.Log("Clicked!");
             }
         }
     }
 
-    private void DestroyDah()
+    void BounceObject(GameObject obj)
     {
-        if(spacePressedTime > 0)
-        {
-            score += (int)Mathf.Round(spacePressedTime * 5);
-            Destroy(collidedObject);
-            Debug.Log("Clicked!");
-        }
+        float initialY = obj.transform.position.y;
+        float bounce = Mathf.Sin(Time.time * 50.0f) * 0.05f;
+        obj.transform.position = new Vector3(obj.transform.position.x, initialY + bounce, obj.transform.position.z);
     }
+
+
 
     private void ResetTimes()
     {
         collisionTime = 0f;
         spacePressedTime = 0f;
+        clicked = false;
     }
 }
