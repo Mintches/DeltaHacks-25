@@ -40,8 +40,7 @@ public class Generator : MonoBehaviour {
                 letterIndex++;
                 morseIndex = 0;
             }
-        } 
-        else {
+        } else {
             char currentLetter = message[letterIndex];
             string morse = letterMorseMap[currentLetter];
             if (morseIndex < morse.Length) {
@@ -59,8 +58,7 @@ public class Generator : MonoBehaviour {
                     elapsedTime = 0f;
                     morseIndex++;
                 }
-            } 
-            else {
+            } else {
                 GameObject tmp = objectPool.GetPooledObject("End");
                 tmp.transform.position = new Vector3(8, 2, 0);
                 Debug.Log("end");
