@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class CollisionTimer : MonoBehaviour
-{
+public class CollisionTimer : MonoBehaviour {
     private bool isColliding = false;
     private float collisionTime = 0f;  
     private float spacePressedTime = 0f;
@@ -12,8 +11,7 @@ public class CollisionTimer : MonoBehaviour
     public int score = 0;
     private GameObject collidedObject;
 
-    void Start()
-    {
+    void Start() {
         
     }
 
@@ -29,16 +27,12 @@ public class CollisionTimer : MonoBehaviour
         ResetTimes();
     }
 
-    void Update()
-    {
-        if (collidedObject != null && collidedObject.CompareTag("Dit"))
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if (collidedObject != null)
-                {
+    void Update() {
+        if (collidedObject != null && collidedObject.CompareTag("Dit")) {
+            if (Input.GetKey(KeyCode.Space)) {
+                if (collidedObject != null) {
                     score++;
-                    Destroy(collidedObject); 
+                    collidedObject.SetActive(false);
                     Debug.Log("Clicked!");
                 }
                 spacePressedTime += Time.deltaTime;
@@ -55,7 +49,7 @@ public class CollisionTimer : MonoBehaviour
             } else if (clicked)
             {
                 score += (int)Mathf.Round(spacePressedTime * 5);
-                Destroy(collidedObject);
+                collidedObject.SetActive(false);
                 Debug.Log("Clicked!");
             }
         }

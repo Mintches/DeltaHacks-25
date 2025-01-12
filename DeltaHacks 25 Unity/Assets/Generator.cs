@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Generator : MonoBehaviour
-{
+public class Generator : MonoBehaviour {
+    public ObjectPool objectPool;
     public GameObject dit;
     public GameObject dah;
     public GameObject end;
@@ -15,8 +15,7 @@ public class Generator : MonoBehaviour
     private int morseIndex = 0;
     private bool isBetweenLetters = false;
     // letter to morse map, I'll add the rest later
-    Dictionary<char, string> letterMorseMap = new Dictionary<char, string>
-    {
+    Dictionary<char, string> letterMorseMap = new Dictionary<char, string> {
         {'A', ".-"},
         {'B', "-..."},
         {'C', "-.-."},
@@ -49,10 +48,12 @@ public class Generator : MonoBehaviour
                 if (elapsedTime >= gapBetweenMorse) {
                     char ditDah = morse[morseIndex];
                     if (ditDah == '.') {
-                        Instantiate(dit, transform);
+                        GameObject tmp = objectPool.GetPooledObject("Dit");
+                        tmp.transform.position = new Vector3(8, 2, 0);
                         Debug.Log(".");
                     } else if (ditDah == '-') {
-                        Instantiate(dah, transform);
+                        GameObject tmp = objectPool.GetPooledObject("Dah");
+                        tmp.transform.position = new Vector3(8, 2, 0);
                         Debug.Log("-");
                     }
                     elapsedTime = 0f;
@@ -60,7 +61,8 @@ public class Generator : MonoBehaviour
                 }
             } 
             else {
-                Instantiate(end, transform);
+                GameObject tmp = objectPool.GetPooledObject("End");
+                tmp.transform.position = new Vector3(8, 2, 0);
                 Debug.Log("end");
                 isBetweenLetters = true;
                 elapsedTime = 0f;

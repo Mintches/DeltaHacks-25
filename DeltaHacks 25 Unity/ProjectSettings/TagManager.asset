@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dit
   - Dah
+  - End
   layers:
   - Default
   - TransparentFX
