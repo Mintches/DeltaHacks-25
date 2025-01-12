@@ -18,7 +18,7 @@ public class GenerateNumbers : MonoBehaviour {
     }
 
     public void getWord(float x, float y, string word) {
-        if (letters == null) letters = new List<GameObject>();
+        letters = new List<GameObject>();
         for (int i = 0; i < word.Length; i++) {
             GameObject newObj = objectPool.GetPooledObject("Letter");
             LetterRenderer newLetter = newObj.GetComponent<LetterRenderer>();

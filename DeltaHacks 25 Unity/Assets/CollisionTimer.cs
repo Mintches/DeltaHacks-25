@@ -10,21 +10,27 @@ public class CollisionTimer : MonoBehaviour {
 
     public int score = 0;
     private GameObject collidedObject;
+    public AudioSource beep;
+    public GameObject light;
 
     void Start() {
         
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    void OnTriggerEnter2D(Collider2D other) {
         isColliding = true;
         collidedObject = other.gameObject;
+        if (collidedObject.CompareTag("Dit") || collidedObject.CompareTag("Dah")) {
+            beep.Play();
+            light.SetActive(true);
+        }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
+    void OnTriggerExit2D(Collider2D other) {
         isColliding = false;
         ResetTimes();
+        beep.Stop();
+        light.SetActive(false);
     }
 
     void Update() {

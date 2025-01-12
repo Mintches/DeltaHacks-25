@@ -7,6 +7,7 @@ public class Score_Display : MonoBehaviour {
     private GameObject curText = null;
     public ObjectPool objectPool;
     public GameObject collisionObj;
+    
     // Start is called before the first frame update
     void Start() {
         currScore = 0;
@@ -23,7 +24,7 @@ public class Score_Display : MonoBehaviour {
                 curText.GetComponent<GenerateNumbers>().deleteWord();
                 curText.SetActive(false);
             }
-            Debug.Log(newScore);
+            //Debug.Log(newScore);
             curText = objectPool.GetPooledObject("Text");
             curText.GetComponent<GenerateNumbers>().getWord(4,4.5f,scoreText);
             //GetComponent<GenerateNumbers>().getWord(1,1,scoreText);
