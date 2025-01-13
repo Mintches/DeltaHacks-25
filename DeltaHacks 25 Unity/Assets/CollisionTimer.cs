@@ -36,7 +36,7 @@ public class CollisionTimer : MonoBehaviour {
                 curWord.SetActive(false);
             }
             curWord = objectPool.GetPooledObject("Text");
-            curWord.GetComponent<GenerateNumbers>().getWord(-5, 6, other.gameObject.GetComponent<End>().let.ToString());
+            curWord.GetComponent<GenerateNumbers>().getWord(-4.5f, 4.5f, other.gameObject.GetComponent<End>().let.ToString());
         }
     }
 
